@@ -111,7 +111,6 @@ def create_post(
     # Проверяем, совпадает ли токен из запроса с тем, который хранится в базе данных
     if authorization != user.token:
         raise HTTPException(status_code=401, detail="Недостаточно прав для обновления поста")
-    # Если пользователь имеет право создавать посты, продолжайте с созданием поста
     db_post = Post(**post.dict())
     db_post.user_name = user_name
     db.add(db_post)
